@@ -16,6 +16,8 @@ This is the space for you to add a description for your project.
 
 This template is a starting place for your project. Update the header information to include the relevant details for your project, and then feel free to mix and match the visualization and layout techniques introduced here for your own narrative.
 
+Think about how the narrative structure draws readers into the story you are telling and how the visualizations interact with the text (and with each other). The narrative should help ensure that the page as a whole is greater than just the sum of it's parts. When designing your page, decide on particular layouts that enhance the reader's experience and understanding of the topic.
+
 ### Required Software
 
 You must have Node.js installed. You can get it directly from https://nodejs.org/en/.
