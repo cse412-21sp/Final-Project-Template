@@ -7,7 +7,7 @@
   author:"Jane Hoffswell"
   authorLink: "https://courses.cs.washington.edu/courses/cse412/21sp/index.html"
   date:"Apr 6, 2021"
-  background:"#222222"
+  background:"#33333f"
   color:"#ffffff"
    /]
 
@@ -37,9 +37,8 @@ We can easily embed images inline by including a short code snippet referencing 
 
 Idyll has support for embedding Vega-Lite visualizations to the page using a similar approach to the standard image. To get started, we need to first install Vega-Lite by running the command: `npm i --save idyll-vega-lite`. We can then embed a visualization as follows (see the `index.idyll` file for the actual code):
 
-[IdyllVegaLite data:sunshine spec:`{
+[IdyllVegaLite actions:false width:"container" data:sunshine spec:`{
   mark: "bar",
-  width: 400,
   encoding: {
     x: {
       field: "month",
@@ -97,16 +96,16 @@ This example is currently using the [embed example from Plotly's documentation](
 ### Changing the Narrative Structure and Page Layout
 
 [Aside]
-[IdyllVegaLite data:sunshine spec:`{
+[IdyllVegaLite actions:false data:sunshine spec:`{
   mark: "bar",
-  width: 225,
+  width: 190,
   height: 100,
   encoding: {
     x: {
       field: "month",
       type: "nominal",
       sort: null,
-      axis: {labelAngle: 0, ticks: false}
+      axis: {labelAngle: 0, ticks: false, labelExpr: "datum.label[0]"}
     },
     y: {
       field: "sunshine",
@@ -143,9 +142,8 @@ Perhaps you would like to try including a large image in the background, with te
   [Step]
     The contents for these text boxes are described with the `Step` component, and can even include other components like the visualizations from before!
 
-    [IdyllVegaLite data:sunshine spec:`{
+    [IdyllVegaLite actions:false width:"container" data:sunshine spec:`{
       mark: "bar",
-      width: 400,
       encoding: {
         x: {
           field: "month",
@@ -174,20 +172,38 @@ This page also describes a variety of the other built-in components for controll
 
 Let's take a look at some dynamic visualization updates with another scrollytelling example. In this case, we will use a fixed visualization alongside the text and update the visualization as we go. Keep scrolling to see the example...
 
-[var name:"state" value:0 /]
+[var name:"myLocation" value:0 /]
 
-[Scroller currentStep:state]
+[Scroller className:"hasBackground" currentStep:myLocation]
 
   [Graphic className:"d3-component-container"]
-    [CustomD3Component className:"d3-component" state:`state+1` /]
+    [CustomD3Component className:"d3-component" state:`myLocation+1` /]
   [/Graphic]
 
   [Step]
-    [span style:`{color:'red', fontWeight:'bold'}`]I have no idea why the second scoller works differently than the first. It is not showing the custom D3 component like it did in the template?[/span]
+    This `Scroller` uses some custom CSS to set the background color to "#33333f" [Inline][div style:`{background: "#33333f", width: 12, height: 12}` /][/Inline].
   [/Step]
 
   [Step]
-    [span style:`{color:'red', fontWeight:'bold'}`]Plan is to use this part of the document to show interactive updates and the fixed side scrolling example.[/span]
+    It also uses custom CSS to style the `Graphic` (which is a custom D3 component) so that it appears as a fixed visualization next to the scrolling text.
+  [/Step]
+
+  [Step]
+    What's cool about this `CustomD3Component` is that it updates as we scroll. It does this by leveraging the `update` function to animate the point as it moves to a new position.
+  [/Step]
+
+  [Step]
+    To keep track of where we are in the `Scroller`, we first defined a dynamic Idyll variable named `myLocation` using the following code: `[var name:"myLocation" value:0 /]`
+  [/Step]
+
+  [Step]
+    Each time we scroll to a new `Step`, the `Graphic` updates it state based on this dynamic variable, which can be used to parameterize the visualization.
+  [/Step]
+
+  [Step]
+    Right now, the value of `myLocation` is [Display value:myLocation /]. Cool huh?
+
+    [span style:`{color:'#aaa', fontStyle:'italic'}`]If you scroll back and forth between this `Step` and the previous one, notice how the value that is displayed changes based on when the new `Step` is triggered.[/span]
   [/Step]
 
 [/Scroller]
