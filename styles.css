@@ -2,6 +2,10 @@
   background: #ddd;
   max-height: 300px;
 }
+.vg-tooltip table {
+  margin-bottom: 0px;
+}
+
 @media all and (max-width: 1000px) {
   .d3-component svg {
     max-height: 200px;

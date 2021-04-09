@@ -49,6 +49,10 @@ Idyll has support for embedding Vega-Lite visualizations to the page using a sim
     y: {
       field: "sunshine",
       type: "quantitative"
+    },
+    tooltip: {
+      field: "sunshine",
+      type: "quantitative"
     }
   }
 }` /]
@@ -110,7 +114,11 @@ This example is currently using the [embed example from Plotly's documentation](
     y: {
       field: "sunshine",
       type: "quantitative"
-    }
+    },
+    tooltip: [
+      {field: "month", type: "nominal"},
+      {field: "sunshine", type: "quantitative"}
+    ]
   }
 }` /]
 [/Aside]
@@ -152,6 +160,10 @@ Perhaps you would like to try including a large image in the background, with te
           axis: {labelAngle: 0, ticks: false}
         },
         y: {
+          field: "sunshine",
+          type: "quantitative"
+        },
+        tooltip: {
           field: "sunshine",
           type: "quantitative"
         }
