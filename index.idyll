@@ -59,7 +59,17 @@ Idyll has support for embedding Vega-Lite visualizations to the page using a sim
 
 The main Vega-Lite component uses the JSON syntax, but you can also create Vega-Lite visualizations using the API as follows:
 
-[span style:`{color:'red', fontWeight:'bold'}`]Jane will add a component for the Vega-Lite API.[/span]
+[IdyllVegaLite actions:false width:"container" data:sunshine spec:`
+  vl.markBar().encode(
+    vl.x().fieldN("month").sort("none").axis({labelAngle: 0, ticks: false}),
+    vl.y().fieldQ("sunshine"),
+    vl.tooltip().fieldQ("sunshine")
+  ).toSpec()
+` /]
+
+The main thing to note when using the API is that you must call `.toSpec()` at the end of your code in order to make the `IdyllVegaLite` component behave normally.
+
+[span style:`{color:'#aaa', fontStyle:'italic'}`]Fun Fact: Using the `.toSpec()` function is an easy way to port visualizations from Observable to your final webpage. Develop your designs in Observable as normal, then copy the JSON specification as follows: `JSON.stringify(myVis.toSpec())`, where `myVis` is the name of the variable containing your visualization. The `JSON.stringify` function allows you to copy the text (string) version of the JSON object. Note that you may have to adjust the JSON spec slightly when adding it to the `IdyllVegaLite` component in order to import your data appropriately.[/span]
 
 #### Embedding D3 visualizations
 
