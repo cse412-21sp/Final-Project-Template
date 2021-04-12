@@ -89,13 +89,13 @@ The original visualization is on the larger side, so we can display it using a `
 
 #### Embedding Plotly visualizations
 
-You can embed Plotly visualizations as follows:
+Similar to the other embedded visualizations, you can embed interactive Plotly visualizations using the custom component `PlotlyEmbed`:
 
-[PlotlyEmbed link:"https://plotly.com/~chris/1638.embed" height:"525" width:"100%" /]
+[FullWidth]
+[PlotlyEmbed link:"https://plotly.com/~kmarathe/1.embed" height:"800" width:"100%" /]
+[/FullWidth]
 
-[span style:`{color:'red', fontWeight:'bold'}`]Jane: Change this example to one from the class.[/span] 
-
-This example is currently using the [embed example from Plotly's documentation](https://plotly.com/python/embedding-plotly-graphs-in-HTML/).
+Note that the `width` and `height` parameters control the size of the `iframe` that is embedded in the page, *not* the visualization, so you will need to design your visualizations with Plotly accordingly, and test the page layout.
 
 ### Changing the Narrative Structure and Page Layout
 
