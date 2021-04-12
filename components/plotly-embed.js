@@ -3,7 +3,6 @@ const React = require('react');
 class PlotlyEmbed extends React.Component {
   render() {
     const { hasError, idyll, updateProps, ...props } = this.props;
-    console.log("SHOW", this.props.showlink)
     var showLink = "?showlink=" + (this.props.showlink ? true : false)
     return (
       <iframe 
