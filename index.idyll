@@ -126,6 +126,8 @@ You can embed Observable visualizations as follows:
 
 The original visualization is on the larger side, so we can display it using a `FullWidth` component so that the visualization spans the whole width of our browser window. While you can customize the size of the embeded window, the size of the *visualizations* will be the same as the original Observable document.
 
+To get the link you need for the `ObservableEmbed`, please see Observable's documentation on it [here](https://observablehq.com/@observablehq/introduction-to-embedding).
+
 [span style:`{color:'#aaa', fontStyle:'italic'}`]Note: If you don't like having the Tableau or Observable branding on your page, consider porting the visualizations to Vega-Lite or D3. Interactions will also be smoother and more responsive for visualizations that have been ported over, rather than those that are embedded from a different website. When designing your narrative, think about how important the interactions are for communicating the main takeaways, and decide on a particular implementation accordingly.[/span]
 
 #### Embedding Plotly visualizations
