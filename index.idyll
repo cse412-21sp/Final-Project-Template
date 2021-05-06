@@ -2,10 +2,11 @@
 
 [Header
   fullWidth:true
-  title:"CSE412 Final Project Template"
+  title:"CSE412 Final Project Template - Week 6 Section"
   subtitle:"Use this structure to get started, but make the narrative your own!"
   author:"Jane Hoffswell"
-  authorLink: "https://courses.cs.washington.edu/courses/cse412/21sp/index.html"
+  authorLink: "
+  https://courses.cs.washington.edu/courses/cse412/21sp/index.html"
   date:"Apr 6, 2021"
   background:"#33333f"
   color:"#ffffff"
@@ -79,11 +80,41 @@ Idyll has a pre-supported component for rendering D3 visualizations; to create a
 
 #### Embedding Tableau visualizations
 
-You can embed Tableau visualizations as follows:
+If you look at the `index.idyll`, this is how you can embed Tableau visualizations:
 
 [TableauEmbed link:"https://public.tableau.com/views/412demo/Sheet1?" width:"100%" height:"400"/]
 
 `TableauEmbed` is a custom component defined in the file `tableau-embed.js`. You can similarly [create your own custom components](https://idyll-lang.org/docs/components/custom) for other types of embeddings.
+
+To get the link for embedding your Tableau document (or dashboard) you need to first publish it to Tableau Public.
+
+[span style:`{color:'#aaa', fontStyle:'italic'}`]Notice that Tableau Public server is public so people can find and see the visualizations you post there. It is fine since we are analyzing public data. However, it is not great if you're using private data, in which case you may want to create your own server.[/span]
+
+To upload your dashboard to the Tableau Public server, you need to first create a profile for Tableau Public:
+
+1. Go to [Tableau Public](https://public.tableau.com/s)
+2. Click on "Sign In"
+3. Click on "Create one now for free"
+4. Fill in your information and click on "Create My Profile"
+5. Check your email to activate your profile!
+
+To make sure Tableau Public knows what data we're using, we need to extract it. In the top menu bar of Tableau, select "Data" --> "Your Dataset" --> "Extract Data", like shown below:
+
+![extractdata](./static/images/image@3.png)
+
+An "Extract Data" window will then pop up, and Click on "Extract".
+
+![extract](./static/images/image@4.png)
+
+Now that we have prepared our data for publishing let's upload our interactive visualization to the Tableau Public server. In the top menu bar of Tableau, select "Server" --> "Tableau Public" --> "Save to Tableau Public As...":
+
+![save as](./static/images/image@1.png)
+
+Sign in to your Tableau Public account, and name your workbook. A web browser is automatically opened and you should be able to see your visualization online now! In your online workbook, click the share button under your visualization.
+
+![share](./static/images/image@5.png)
+
+You should now see the share window pop up. Copy what's in the "Link" box and paste that into the TableauEmbed link.
 
 #### Embedding Observable visualizations
 
@@ -232,11 +263,44 @@ Let's take a look at some dynamic visualization updates with another scrollytell
 
 [br /]
 
+You can really put anything in these dynamic variables. For example, the Vega-Lite visualization we keep using could have been in a variable.
+
+[var name:"myViz" value:`{
+  mark: "bar",
+  encoding: {
+    x: {
+      field: "month",
+      type: "nominal",
+      sort: "none",
+      axis: {labelAngle: 0, ticks: false}
+    },
+    y: {
+      field: "sunshine",
+      type: "quantitative"
+    },
+    tooltip: {
+      field: "sunshine",
+      type: "quantitative"
+    }
+  }
+}` /]
+[IdyllVegaLite actions:false width:"container" data:sunshine spec:myViz /]
+
+There's a better way, though. What if we create our own new custom component? This way we can seperate out our visualizations into different files. See `components/my-viz.js` for the following example.
+
+[span style:`{color:'#aaa', fontStyle:'italic'}`]How did we know how to write that file? We looked at the [source code](https://github.com/idyll-lang/idyll-vega-lite/blob/master/index.js) of idyll-vega-lite. Idyll and its surrounding packages have their source on GitHub if you're ever curious.[/span]
+
+[MyViz actions:false data:sunshine width:"container"/]
+
+You can also use the Vega-Lite API like in the following example, found in `components/my-api-viz.js`.
+
+[MyAPIViz actions:false data:sunshine width:"container"/]
+
 # Getting Started with Your Project
 
-This template is a starting place for your project. Update the header information to include the relevant details for your project, and then feel free to mix and match the visualization and layout techniques introduced here for your own narrative.
+This template is a starting place for your project. Update the header information to include the relevant details for your project, and then feel free to mix and match the visualization and layout techniques introduced here for your own narrative. Use this template and especially the [Idyll documentation](https://idyll-lang.org/docs) as a reference for what you can do.
 
-Think about how the narrative structure draws readers into the story you are telling and how the visualizations interact with the text (and with each other). The narrative should help ensure that the page as a whole is greater than just the sum of it's parts. When designing your page, decide on particular layouts that enhance the reader's experience and understanding of the topic.
+Think about how the narrative structure draws readers into the story you are telling and how the visualizations interact with the text (and with each other). The narrative should help ensure that the page as a whole is greater than just the sum of its parts. When designing your page, decide on particular layouts that enhance the reader's experience and understanding of the topic.
 
 ## Required Software
 
@@ -258,7 +322,7 @@ Run `idyll` from the command line. Your post will appear at [http://localhost:30
 
 ## Building a post for production
 
-Run `idyll build`. The output will appear in the top-level `build` folder. To change the output location, change the `output` option in `package.json`.
+Run `idyll build`. The output will appear in the top-level `build` folder. To change the output location, change the `output` option in `package.json`, such as to `docs`.
 
 ## Deploying
 
