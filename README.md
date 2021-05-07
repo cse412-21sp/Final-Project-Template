@@ -42,7 +42,7 @@ Run `idyll build`. The output will appear in the top-level `build` folder. To ch
 
 ### Deploying
 
-Make sure your post has been built, then commit the `docs` folder to your project repository. It will be available at [cse412-21sp.github.io/your-repo-name/](). For example, you can view the sample embedded Tableau, vega-lite, and d3 charts at [https://jhoffswell.github.io/cse412-project-template-idyll/](https://jhoffswell.github.io/cse412-project-template-idyll/).
+Make sure your post has been built, then commit the `docs` folder to your project repository. It will be available at [cse412-21sp.github.io/your-repo-name/](). For example, you can view the sample embedded Tableau, vega-lite, and d3 charts at [https://cse412-21sp.github.io/Final-Project-Template](https://cse412-21sp.github.io/Final-Project-Template).
 
 #### Acknowledgements
 

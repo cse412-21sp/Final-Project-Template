@@ -2,7 +2,7 @@
 
 [Header
   fullWidth:true
-  title:"CSE412 Final Project Template - Week 6 Section"
+  title:"CSE412 Final Project Template"
   subtitle:"Use this structure to get started, but make the narrative your own!"
   author:"Jane Hoffswell"
   authorLink: "
@@ -86,36 +86,6 @@ If you look at the `index.idyll`, this is how you can embed Tableau visualizatio
 
 `TableauEmbed` is a custom component defined in the file `tableau-embed.js`. You can similarly [create your own custom components](https://idyll-lang.org/docs/components/custom) for other types of embeddings.
 
-To get the link for embedding your Tableau document (or dashboard) you need to first publish it to Tableau Public.
-
-[span style:`{color:'#aaa', fontStyle:'italic'}`]Notice that Tableau Public server is public so people can find and see the visualizations you post there. It is fine since we are analyzing public data. However, it is not great if you're using private data, in which case you may want to create your own server.[/span]
-
-To upload your dashboard to the Tableau Public server, you need to first create a profile for Tableau Public:
-
-1. Go to [Tableau Public](https://public.tableau.com/s)
-2. Click on "Sign In"
-3. Click on "Create one now for free"
-4. Fill in your information and click on "Create My Profile"
-5. Check your email to activate your profile!
-
-To make sure Tableau Public knows what data we're using, we need to extract it. In the top menu bar of Tableau, select "Data" --> "Your Dataset" --> "Extract Data", like shown below:
-
-![extractdata](./static/images/image@3.png)
-
-An "Extract Data" window will then pop up, and Click on "Extract".
-
-![extract](./static/images/image@4.png)
-
-Now that we have prepared our data for publishing let's upload our interactive visualization to the Tableau Public server. In the top menu bar of Tableau, select "Server" --> "Tableau Public" --> "Save to Tableau Public As...":
-
-![save as](./static/images/image@1.png)
-
-Sign in to your Tableau Public account, and name your workbook. A web browser is automatically opened and you should be able to see your visualization online now! In your online workbook, click the share button under your visualization.
-
-![share](./static/images/image@5.png)
-
-You should now see the share window pop up. Copy what's in the "Link" box and paste that into the TableauEmbed link.
-
 #### Embedding Observable visualizations
 
 You can embed Observable visualizations as follows:
@@ -125,8 +95,6 @@ You can embed Observable visualizations as follows:
 [/FullWidth]
 
 The original visualization is on the larger side, so we can display it using a `FullWidth` component so that the visualization spans the whole width of our browser window. While you can customize the size of the embeded window, the size of the *visualizations* will be the same as the original Observable document.
-
-To get the link you need for the `ObservableEmbed`, please see Observable's documentation on it [here](https://observablehq.com/@observablehq/introduction-to-embedding).
 
 [span style:`{color:'#aaa', fontStyle:'italic'}`]Note: If you don't like having the Tableau or Observable branding on your page, consider porting the visualizations to Vega-Lite or D3. Interactions will also be smoother and more responsive for visualizations that have been ported over, rather than those that are embedded from a different website. When designing your narrative, think about how important the interactions are for communicating the main takeaways, and decide on a particular implementation accordingly.[/span]
 
